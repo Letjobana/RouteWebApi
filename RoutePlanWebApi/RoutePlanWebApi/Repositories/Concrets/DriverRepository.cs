@@ -17,10 +17,11 @@ namespace RoutePlanWebApi.Repositories.Concrets
         public Driver AddDrivers(Driver driver)
         {
             if (driver == null)
-            {
                 throw new ArgumentNullException("driver");
-            }
-            context.Drivers.Add(driver);
+            else if (DriverExist(driver.FirstName))
+                throw new ArgumentException("The name already exist");
+            else
+                context.Drivers.Add(driver);
             context.SaveChanges();
             return driver;
         }
