@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace RoutePlanWebApi.Repositories.Concrets
 {
-    public class DriverRepository : IDriverRepositorycs
+    public class DriverRepository : IDriverRepository
     {
         private ApplicationDbContext context;
         public DriverRepository(ApplicationDbContext context)

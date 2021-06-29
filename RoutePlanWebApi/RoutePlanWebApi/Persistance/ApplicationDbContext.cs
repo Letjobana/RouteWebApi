@@ -1,9 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RoutePlannerWebAPI.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RoutePlanWebApi.Persistance
 {
@@ -20,7 +16,7 @@ namespace RoutePlanWebApi.Persistance
 
         public DbSet<RoutePlanDetail> RoutePlanDetails { get; set; }
         public DbSet<AdditionalHazard> AdditionalHazards { get; set; }
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+        // public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
     }
 }

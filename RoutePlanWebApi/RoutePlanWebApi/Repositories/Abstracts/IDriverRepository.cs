@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RoutePlanWebApi.Repositories.Abstracts
 {
-    public interface IDriverRepositorycs
+    public interface IDriverRepository
     {
         IEnumerable<Driver> GetAllDrivers();
         Driver AddDrivers(Driver driver);
