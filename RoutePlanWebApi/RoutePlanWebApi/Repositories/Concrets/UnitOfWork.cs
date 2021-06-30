@@ -1,4 +1,5 @@
-﻿using RoutePlanWebApi.Persistance;
+﻿
+using RoutePlanWebApi.Persistance;
 using RoutePlanWebApi.Repositories.Abstracts;
 using System;
 using System.Collections.Generic;
@@ -9,15 +10,15 @@ namespace RoutePlanWebApi.Repositories.Concrets
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private ApplicationDbContext context;
+        private ApplicationDbContext _context;
         public IApiRepository apiRepository { get; private set; }
 
         public IDriverRepository driverRepository { get; private set; }
-        public UnitOfWork()
+        public UnitOfWork(ApplicationDbContext context)
         {
-            context = new ApplicationDbContext();
+            _context =context;
             apiRepository = new ApiRepository();
-            driverRepository = new DriverRepository(context);
+            driverRepository = new DriverRepository(_context);
         }
     }
 }

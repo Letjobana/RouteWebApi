@@ -1,6 +1,7 @@
 ﻿using RoutePlannerWebAPI.Models;
 using RoutePlanWebApi.Persistance;
 using RoutePlanWebApi.Repositories.Abstracts;
+using RoutePlanWebApi.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,16 +15,31 @@ namespace RoutePlanWebApi.Repositories.Concrets
         {
             this.context = context;
         }
-        public Driver AddDrivers(Driver driver)
+        public Driver AddDrivers(DriverModel driver)
         {
+
             if (driver == null)
-                throw new ArgumentNullException("driver");
+                throw new ArgumentException("Driver cannot be null");
             else if (DriverExist(driver.FirstName))
                 throw new ArgumentException("The name already exist");
-            else
-                context.Drivers.Add(driver);
+            
+
+            var candidate = new Driver()
+            {
+                FirstName = driver.FirstName,
+                PhoneNumber = driver.PhoneNumber,
+                Email = driver.Email,
+                Department = driver.Department,
+                Section = driver.Section,
+                LineManager = driver.LicenseNumber,
+                LicenseNumber = driver.LicenseNumber,
+                LicenseExpiry = driver.LicenseExpiry
+
+            };
+
+            context.Drivers.Add(candidate);
             context.SaveChanges();
-            return driver;
+            return candidate;
         }
 
         public bool DriverExist(string name)

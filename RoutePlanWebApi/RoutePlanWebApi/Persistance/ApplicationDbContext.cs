@@ -16,7 +16,7 @@ namespace RoutePlanWebApi.Persistance
 
         public DbSet<RoutePlanDetail> RoutePlanDetails { get; set; }
         public DbSet<AdditionalHazard> AdditionalHazards { get; set; }
-        // public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
     }
 }
