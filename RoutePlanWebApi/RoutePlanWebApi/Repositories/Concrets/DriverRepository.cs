@@ -17,20 +17,22 @@ namespace RoutePlanWebApi.Repositories.Concrets
         }
         public Driver AddDrivers(DriverModel driver)
         {
+            var section = context.Sections.Select(x => x.SectionName).ToString();
+            var department = context.Departments.Select(x => x.DepartmentName).ToString();
 
             if (driver == null)
                 throw new ArgumentException("Driver cannot be null");
             else if (DriverExist(driver.FirstName))
                 throw new ArgumentException("The name already exist");
-            
+
 
             var candidate = new Driver()
             {
                 FirstName = driver.FirstName,
                 PhoneNumber = driver.PhoneNumber,
                 Email = driver.Email,
-                Department = driver.Department,
-                Section = driver.Section,
+                Department = department,
+                Section = section,
                 LineManager = driver.LicenseNumber,
                 LicenseNumber = driver.LicenseNumber,
                 LicenseExpiry = driver.LicenseExpiry

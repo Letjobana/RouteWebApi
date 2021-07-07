@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+</head>
+<body style="margin: 10px 10px 10px 10px" id="mainContent">
+    <div id="mainmodel-container">
+        <div>
+            <h4>Add Driver</h4>
+        </div>
+        <div id="wrapper" style="width:800px;margin-left:20%;margin-right:20%">
+            <fieldset>
+                <legend>Driver's detail</legend>
+                <form data-bind="submit:$root.submitDriver">
+                    <div>
+                        <label>First Name</label>
+                        <input name="firstname" type="text" data-bind="value:$root.firstname" style="width:100%;">
+                    </div>
+
+                    <div>
+                        <label>Phone Number</label>
+                        <input name="phonenumber" type="number" data-bind="value:$root.phonenumber" style="width:100%;">
+                    </div>
+                    <div>
+                        <label>Email Address</label>
+                        <input name="email" type="text" data-bind="value:$root.email" style="width:100%;">
+                    </div>
+                    <div>
+                        <label>Department</label>
+                        <input name="department" type="text" data-bind="value:$root.department" style="width:100%;">
+                    </div>
+                    <div>
+                        <label>Section</label>
+                        <input name="section" type="text" data-bind="value:$root.section" style="width:100%;">
+                    </div>
+                    <div>
+                        <label>Line Manager</label>
+                        <input name="linemanager" type="text" data-bind="value:$root.linemanager" style="width:100%;">
+                    </div>
+                    <div>
+                        <label>License Details</label>
+                        <input name="licensedetails" type="text" data-bind="value:$root.licensedetails" style="width:100%;">
+                    </div>
+                    <div>
+                        <label>License Expiry</label>
+                        <input name="licenseexpiry" type="datetime-local" id="licenseexpiry" data-bind="value:$root.licenseexpiry" style="width:100%;">
+                    </div>
+                    <br />
+                    <button class="geotabButton" type="submit" style="width:auto; float:right;margin-left:5px;">Save </button>
+
+                </form>
+            </fieldset>
+        </div>
+    </div>
+    <script src="../Scripts/moment.js"></script>
+    <script src="../Scripts/moment-timezone-with-data.js"></script>
+    <script src="../Scripts/jquery-3.6.0.min.js"></script>
+    <script src="../Scripts/knockout-3.5.1.js"></script>
+    <script src="../Scripts/Driver.js"></script>
+</body>
+</html>

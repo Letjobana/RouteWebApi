@@ -42,7 +42,7 @@ namespace RoutePlanWebApi
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseCors(origins => origins.AllowAnyOrigin());
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

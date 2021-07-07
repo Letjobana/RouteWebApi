@@ -19,7 +19,7 @@ namespace RoutePlannerWebAPI.Models
         public string LicenseNumber { get; set; }
         public DateTime LicenseExpiry { get; set; }
 
-        public ICollection<Vehicle> Vehicles { get; set; }
+        public ICollection<Vehicle> Vehicles {      get; set; }
 
     }
 }

@@ -14,11 +14,13 @@ namespace RoutePlanWebApi.Controllers
         {
             this.unitOfWork = unitOfWork;
         }
+        [HttpGet]
         public IActionResult GetDriver()
         {
 
             return Ok(unitOfWork.driverRepository.GetAllDrivers());
         }
+        [HttpPost]
         public IActionResult AddDriver(DriverModel driver)
         {
             try
