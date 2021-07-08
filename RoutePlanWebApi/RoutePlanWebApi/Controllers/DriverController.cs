@@ -2,6 +2,7 @@
 using RoutePlanWebApi.Repositories.Abstracts;
 using RoutePlanWebApi.ViewModel;
 using System;
+using System.Linq;
 
 namespace RoutePlanWebApi.Controllers
 {
@@ -20,8 +21,50 @@ namespace RoutePlanWebApi.Controllers
 
             return Ok(unitOfWork.driverRepository.GetAllDrivers());
         }
+        [HttpGet]
+        public IActionResult GetDepartment()
+        {
+
+            try
+            {
+                var dept = unitOfWork.driverRepository.GetAllDepartment().Select(r =>
+                new
+                {
+                    Id = r.Id,
+                    DepartmentName = r.DepartmentName
+                }
+               );
+                return Ok(dept);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        [HttpGet]
+        public IActionResult GetSection()
+        {
+
+            try
+            {
+                var sect = unitOfWork.driverRepository.GetAllSection().Select(r =>
+                new
+                {
+                    Id = r.Id,
+                    SectionName = r.SectionName
+                }
+               );
+                return Ok(sect);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
         [HttpPost]
-        public IActionResult AddDriver(DriverModel driver)
+        public IActionResult AddDriver([FromForm] DriverModel driver)
         {
             try
             {

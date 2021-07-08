@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RoutePlannerWebAPI.Models;
 using RoutePlanWebApi.Models;
 
 namespace RoutePlanWebApi.Persistance

@@ -1,8 +1,7 @@
-﻿using RoutePlannerWebAPI.Models;
+﻿using RoutePlanWebApi.Models;
 using RoutePlanWebApi.Persistance;
 using RoutePlanWebApi.Repositories.Abstracts;
 using RoutePlanWebApi.ViewModel;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -17,13 +16,7 @@ namespace RoutePlanWebApi.Repositories.Concrets
         }
         public Driver AddDrivers(DriverModel driver)
         {
-            var section = context.Sections.Select(x => x.SectionName).ToString();
-            var department = context.Departments.Select(x => x.DepartmentName).ToString();
 
-            if (driver == null)
-                throw new ArgumentException("Driver cannot be null");
-            else if (DriverExist(driver.FirstName))
-                throw new ArgumentException("The name already exist");
 
 
             var candidate = new Driver()
@@ -31,8 +24,8 @@ namespace RoutePlanWebApi.Repositories.Concrets
                 FirstName = driver.FirstName,
                 PhoneNumber = driver.PhoneNumber,
                 Email = driver.Email,
-                Department = department,
-                Section = section,
+                Department = driver.Department,
+                Section = driver.Section,
                 LineManager = driver.LicenseNumber,
                 LicenseNumber = driver.LicenseNumber,
                 LicenseExpiry = driver.LicenseExpiry
@@ -49,6 +42,16 @@ namespace RoutePlanWebApi.Repositories.Concrets
             bool existDriver = context.Drivers.Any(x => x.FirstName.ToLower().Trim() == name.ToLower().Trim());
             return existDriver;
         }
+
+        public IEnumerable<Department> GetAllDepartment()
+        {
+            return context.Departments;
+        }
+        public IEnumerable<Section> GetAllSection()
+        {
+            return context.Sections; ;
+        }
+
 
         public IEnumerable<Driver> GetAllDrivers()
         {

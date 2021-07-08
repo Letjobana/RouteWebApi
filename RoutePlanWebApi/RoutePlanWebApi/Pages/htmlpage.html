@@ -29,11 +29,15 @@
                     </div>
                     <div>
                         <label>Department</label>
-                        <input name="department" type="text" data-bind="value:$root.department" style="width:100%;">
+                        <select data-bind="options: $root.departments,optionsText:'departmentName',value:selectedDepartment,optionsCaption:'Select a department'" style="width:100%;">
+                                                                            
+                                                                            
+                        </select>
                     </div>
                     <div>
                         <label>Section</label>
-                        <input name="section" type="text" data-bind="value:$root.section" style="width:100%;">
+                        <select data-bind="options: $root.sections,optionsText:'sectionName',value:selectedSection,optionsCaption:'Select a section'" style="width:100%;">
+                        </select>
                     </div>
                     <div>
                         <label>Line Manager</label>

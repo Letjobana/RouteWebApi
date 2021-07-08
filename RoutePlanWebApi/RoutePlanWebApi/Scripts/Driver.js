@@ -1,7 +1,9 @@
 ﻿var apiSettings = {
-    testingUrl: "https://localhost:44325/api/",
+    testingUrl: "https://localhost:44380/api/",
 }
 $(document).ready(function () {
+    GetDepartment();
+    GetSection();
     AddDriver();
     SetDates();
 });
@@ -11,19 +13,23 @@ function viewModel() {
     self.firstname = ko.observable();
     self.phonenumber = ko.observable();
     self.email = ko.observable();
-    self.department = ko.observable();
-    self.section = ko.observable();
+    self.departments = ko.observableArray([]);    
+    self.selectedDepartment = ko.observable();
+    self.sections = ko.observableArray([]);
+    self.selectedSection = ko.observable();
     self.linemanager = ko.observable();
     self.licensedetails = ko.observable();
     self.licenseexpiry = ko.observable();
 
     self.submitDriver = function () {
+        var departmentType = self.selectedDepartment().departmentName;
+        var sectionType = self.selectedSection().sectionName;
         var Driver = {
             FirstName: self.firstname,
             PhoneNumber: self.phonenumber,
             Email: self.email,
-            Department: self.department,
-            Section: self.section,
+            Department: departmentType,
+            Section: sectionType,
             LineManager: self.linemanager,
             LicenseNumber: self.licensedetails,
             LicenseExpiry: self.licenseexpiry,
@@ -63,13 +69,42 @@ function AddDriver(Driver) {
 
     $.ajax({
         type: "POST",
-        url: apiSettings.testingUrl + "drivers/adddriver",
+        url: apiSettings.testingUrl + "driver/adddriver",
         data: Driver,
         success: function (data) {
             if (data.Status) {
                 MessageBox("Success", "Driver added Successfully", "success", true);
 
+
             }
+
+        }, error: function (error) {
+            console.log(error);
+        }
+    });
+}
+function GetDepartment() {
+    
+
+    $.ajax({
+        url: apiSettings.testingUrl + "driver/getdepartment",
+        type: "Get",        
+        success: function (data) {
+            mainModel.departments(data);
+
+        }, error: function (error) {
+            console.log(error);
+        }
+    });
+}
+function GetSection() {
+
+
+    $.ajax({
+        url: apiSettings.testingUrl + "driver/getsection",
+        type: "Get",
+        success: function (data) {
+            mainModel.sections(data);
 
         }, error: function (error) {
             console.log(error);

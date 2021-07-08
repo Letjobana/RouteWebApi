@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RoutePlannerWebAPI.Models
+namespace RoutePlanWebApi.Models
 {
     public class Trailer
     {
